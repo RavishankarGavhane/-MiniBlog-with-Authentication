@@ -11,17 +11,27 @@
     <table class="table table-striped table-dark">
       <thead>
           <tr>
+            <th>sno</th>
             <th>title</th>
+            <th>about</th>
+            <th>copyright</th>
+            <th>address</th>
             <th>phone</th>
             <th>email</th>
+            <th colspan="2" class="text-center">Images</th>
           </tr>
       </thead>
       <tbody>
         {% for model in models %}
           <tr>
+            <td>{{ model.sno }}</td>
             <td>{{ model.title }}</td>
+            <td>{{ model.about }}</td>
+            <td>{{ model.copyright }}</td>
+            <td>{{ model.address }}</td>
             <td>{{ model.phone }}</td>
             <td>{{ model.email }}</td>
+            <td><img src="{{ model.image.url }}" alt="{{ model.title }}" height="250" class="rounded mx-auto d-block"></td>
           </tr>
         {% endfor %}
       </tbody>

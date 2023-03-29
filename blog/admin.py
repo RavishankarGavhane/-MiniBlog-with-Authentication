@@ -9,4 +9,8 @@ admin.site.register(Home)
 admin.site.register(Contact)
 admin.site.register(Category)
 admin.site.register(Post)
-admin.site.register(Comment)
+# admin.site.register(Comment)
+
+# got get request form django models to html format
+
+

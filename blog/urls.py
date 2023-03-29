@@ -9,16 +9,16 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('',views.home,name="home"),
     path('home',views.home,name="home"),
-    path('blog',views.blog,name="blog"),
+    # path('blog',views.blog,name="blog"),
     path('contact',views.contact,name="contact"),
     path('category',views.category,name="category"),
     # Auth
     path('login/',views.login,name="login"),
     path('signup/',views.signup,name="signup"),
     path('logout/',views.logout,name="logout"),
+    # path('<str:slug>/',views.single,name="single"),
+    #define models from views
 
-
-    path('<str:slug>/',views.single,name="single"),
-
+    path('home_list/',views.home_list, name='home_list'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

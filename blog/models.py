@@ -6,6 +6,7 @@ from autoslug import AutoSlugField
 from ckeditor.fields import RichTextField
 
 
+
 # Create your models here.
 
 class Home(models.Model):
@@ -55,14 +56,14 @@ class Post(models.Model):
         return self.title
 
 
-class Comment(models.Model):
-    sno = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255, blank=True, null=True)
-    email = models.CharField(max_length=255, blank=True, null=True)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True,
-                             blank=True)
-    website = models.CharField(max_length=255, blank=True, null=True)
-    message = models.TextField()
-
-    def __str__(self):
-        return self.name
+# #class Comment(models.Model):
+#     sno = models.AutoField(primary_key=True)
+#     name = models.CharField(max_length=255, blank=True, null=True)
+#     email = models.CharField(max_length=255, blank=True, null=True)
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True,
+#                              blank=True)
+#     website = models.CharField(max_length=255, blank=True, null=True)
+#     message = models.TextField()
+#
+#     def __str__(self):
+#         return self.name

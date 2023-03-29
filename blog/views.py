@@ -7,15 +7,18 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, \
     logout as auth_logout
-
+from .models import Home
 
 # Create your views here.
 
+# write post request from models
+def home_list(request):
+    models = Home.objects.all()
+    return render(request, 'home_list.html', {'models': models})
 
 def home(request):
     home = Home.objects.all()
     cate = Category.objects.all()
-
     allPost = Post.objects.all()
     RecentPost = Post.objects.all()[::-1]
 
@@ -30,13 +33,13 @@ def home(request):
     return render(request, 'blog/index.html', context)
 
 
-def blog(request):
-    home = Home.objects.all()
-    cate = Category.objects.all()
-    allPost = Post.objects.all()[::-1]
-
-    context = {'home': home, 'cate': cate, 'posts': allPost}
-    return render(request, 'blog/blog.html', context)
+# def blog(request):
+#     home = Home.objects.all()
+#     cate = Category.objects.all()
+#     allPost = Post.objects.all()[::-1]
+#
+#     context = {'home': home, 'cate': cate, 'posts': allPost}
+#     return render(request, 'blog/blog.html', context)
 
 
 def contact(request):
@@ -73,12 +76,12 @@ def category(request):
     return render(request, 'blog/category.html', context)
 
 
-def single(request, slug):
-    home = Home.objects.all()
-    cate = Category.objects.all()
-    post = Post.objects.filter(slug=slug).first()
+# def single(request, slug):
+#     home = Home.objects.all()
+#     cate = Category.objects.all()
+#     post = Post.objects.filter(slug=slug).first()
 
-    comment = Comment.objects.filter(post=post)
+    # comment = Comment.objects.filter(post=post)
 
     if request.method == "POST":
         name = request.POST['name']
@@ -87,17 +90,17 @@ def single(request, slug):
         website = request.POST['website']
         message = request.POST['message']
 
-        post_data = Post.objects.get(sno=postsno)
+        # post_data = Post.objects.get(sno=postsno)
 
-        comment = Comment(name=name, email=email, post=post_data,
-                          website=website, message=message)
-        comment.save()
-        messages.success(request, "Comment Successfully Submit")
+        # comment = Comment(name=name, email=email, post=post_data,
+        #                   website=website, message=message)
+        # comment.save()
+        # messages.success(request, "Comment Successfully Submit")
 
-        return redirect('/')
+        # return redirect('/')
 
-    context = {'home': home, 'cate': cate, 'post': post, 'comment': comment}
-    return render(request, 'blog/single.html', context)
+    # context = {'home': home, 'cate': cate, 'post': post, 'comment': comment}
+    # return render(request, 'blog/single.html', context)
 
 
 def login(request):
@@ -169,3 +172,4 @@ def logout(request):
     auth_logout(request)
     messages.success(request, "Logout Succesfully")
     return redirect('/')
+

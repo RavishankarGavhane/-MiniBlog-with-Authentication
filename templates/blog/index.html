@@ -17,7 +17,7 @@
 
 
             <div class="col-md-4">
-              <a href="{{post.slug}}" class="h-entry mb-30 v-height gradient" style="background-image: url({{post.image.url}});">
+
 
                 <div class="text">
                   <h2>{{post.title | safe}}</h2>
@@ -58,13 +58,11 @@
 
           <div class="col-lg-4 mb-4">
             <div class="entry2">
-              <a href="{{post.slug |safe}}"><img src="{{post.image.url}}" alt="Image" class="img-fluid rounded"></a>
               <div class="excerpt">
               <span class="post-category text-white bg-secondary mb-3">{{post.category.title | safe}}</span>
 
               <h2><a href="{{post.slug | safe}}">{{post.title | safe }}</a></h2>
               <div class="post-meta align-items-center text-left clearfix">
-                <figure class="author-figure mb-0 mr-3 float-left"><img src="{{post.image.url}}" alt="Image" class="img-fluid"></figure>
 
                 <span>&nbsp;-&nbsp; {{post.date | safe }}</span>
               </div>
